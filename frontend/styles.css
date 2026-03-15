@@ -1,0 +1,71 @@
+/* Custom Tailwind enhancements for SkinAI */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Font */
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Chart improvements */
+#prediction-chart {
+    max-height: 300px;
+}
+
+/* Loading spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .text-5xl { font-size: 2.5rem; }
+    .text-7xl { font-size: 3.5rem; }
+    .p-16 { padding: 4rem 2rem !important; }
+}
+
+/* Dark mode enhancements */
+.dark .bg-gradient-to-br {
+    background: linear-gradient(135deg, var(--tw-gradient-stops));
+}
+
+.dark [class*="bg-gray-"] {
+    --tw-bg-opacity: 0.5;
+}
+
+/* Hover effects */
+.group-hover\:scale-110 > * {
+    transform: scale(1.1);
+}
