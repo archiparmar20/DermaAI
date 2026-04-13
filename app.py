@@ -231,10 +231,10 @@ def model_info():
 @app.route('/', methods=['GET'])
 def serve_frontend():
     """Serve the frontend"""
-    frontend_path = 'frontend_ui/dist/index.html'
-    if os.path.exists(frontend_path):
-        with open(frontend_path, 'r') as f:
-            return f.read()
+    dist_dir = os.path.abspath('frontend_ui/dist')
+    index_path = os.path.join(dist_dir, 'index.html')
+    if os.path.isfile(index_path):
+        return send_from_directory(dist_dir, 'index.html')
     else:
         return jsonify({'error': 'Frontend not built. Run: cd frontend_ui && pnpm install && pnpm build'}), 404
 
