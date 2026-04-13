@@ -366,7 +366,7 @@ class SkinDiseaseTrainer:
         print(f"Epochs: {epochs} | Batch Size: {self.batch_size}")
         print(f"Classes: {num_classes} | Train Samples: {len(X_train)}")
         print(f"\n✨ Optimization Strategy:")
-        print(f"  • SGD optimizer (momentum=0.9, weight decay=1e-4)")
+        print(f"  • SGD optimizer (momentum=0.95, weight decay=1e-4)")
         print(f"  • Cosine annealing with warm restarts")
         print(f"  • Class-weighted loss + label smoothing (0.1)")
         print(f"  • 2-stage unfreezing (epochs 10, 20)")

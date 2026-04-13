@@ -241,17 +241,16 @@ def serve_frontend():
 @app.route('/<path:path>', methods=['GET'])
 def serve_static(path):
     """Serve static files from frontend dist"""
-    dist_path = Path('frontend_ui/dist')
-    if dist_path.exists():
-        file_path = (dist_path / path).resolve()
-        # Ensure the resolved path is within dist_path to prevent path traversal
-        if file_path.is_relative_to(dist_path.resolve()) and file_path.exists() and file_path.is_file():
-            return send_from_directory(dist_path, path)
+    dist_dir = os.path.abspath('frontend_ui/dist')
+    try:
+        # send_from_directory safely resolves paths and prevents traversal
+        return send_from_directory(dist_dir, path)
+    except Exception:
+        pass
     # Fallback to index.html for SPA routing
-    index_path = Path('frontend_ui/dist/index.html')
-    if index_path.exists():
-        with open(index_path, 'r') as f:
-            return f.read()
+    index_path = os.path.join(dist_dir, 'index.html')
+    if os.path.isfile(index_path):
+        return send_from_directory(dist_dir, 'index.html')
     return jsonify({'error': 'Not found'}), 404
 
 if __name__ == '__main__':
