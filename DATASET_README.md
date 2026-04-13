@@ -36,7 +36,7 @@ Ready for `train.py` immediately.
 
 ```bash
 # Set environment variable with your API key
-export KAGGLE_API_TOKEN=KGAT_f0f5d885b242f02dea20ba64c658dd16
+export KAGGLE_API_TOKEN=YOUR_API_TOKEN_HERE
 export KAGGLE_USERNAME=your_kaggle_username
 
 # Run the script
@@ -45,7 +45,7 @@ python dataset_builder.py
 
 On Windows PowerShell:
 ```powershell
-$env:KAGGLE_API_TOKEN = "KGAT_f0f5d885b242f02dea20ba64c658dd16"
+$env:KAGGLE_API_TOKEN = "YOUR_API_TOKEN_HERE"
 $env:KAGGLE_USERNAME = "your_kaggle_username"
 python dataset_builder.py
 ```
@@ -53,7 +53,7 @@ python dataset_builder.py
 ### Option 2: Command Line Arguments
 
 ```bash
-python dataset_builder.py --api-key KGAT_f0f5d885b242f02dea20ba64c658dd16 --username your_kaggle_username
+python dataset_builder.py --api-key YOUR_API_TOKEN_HERE --username your_kaggle_username
 ```
 
 ### Option 3: kaggle.json File
@@ -215,17 +215,17 @@ Provide your API key using ONE of these methods:
 **Option 1 - Environment Variable (Best):**
 ```bash
 # Linux/Mac
-export KAGGLE_API_TOKEN=KGAT_f0f5d885b242f02dea20ba64c658dd16
+export KAGGLE_API_TOKEN=YOUR_API_TOKEN_HERE
 export KAGGLE_USERNAME=your_kaggle_username
 
 # Windows PowerShell
-$env:KAGGLE_API_TOKEN = "KGAT_f0f5d885b242f02dea20ba64c658dd16"
+$env:KAGGLE_API_TOKEN = "YOUR_API_TOKEN_HERE"
 $env:KAGGLE_USERNAME = "your_kaggle_username"
 ```
 
 **Option 2 - Command Line:**
 ```bash
-python dataset_builder.py --api-key KGAT_f0f5d885b242f02dea20ba64c658dd16 --username your_username
+python dataset_builder.py --api-key YOUR_API_TOKEN_HERE --username your_username
 ```
 
 **Option 3 - kaggle.json File:**

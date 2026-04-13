@@ -198,7 +198,8 @@ def predict():
         })
     
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        app.logger.error(f"Prediction error: {e}")
+        return jsonify({'error': 'An internal error occurred during prediction'}), 500
 
 @app.route('/api/training-history', methods=['GET'])
 def training_history():
@@ -242,8 +243,9 @@ def serve_static(path):
     """Serve static files from frontend dist"""
     dist_path = Path('frontend_ui/dist')
     if dist_path.exists():
-        file_path = dist_path / path
-        if file_path.exists() and file_path.is_file():
+        file_path = (dist_path / path).resolve()
+        # Ensure the resolved path is within dist_path to prevent path traversal
+        if file_path.is_relative_to(dist_path.resolve()) and file_path.exists() and file_path.is_file():
             return send_from_directory(dist_path, path)
     # Fallback to index.html for SPA routing
     index_path = Path('frontend_ui/dist/index.html')
