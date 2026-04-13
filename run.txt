@@ -1,0 +1,57 @@
+cd frontend_ui && pnpm install && pnpm build && cd ..
+python app.py
+# Open http://localhost:5000
+
+
+================================================================================
+SKIN DISEASE DETECTION - RUNNABLE COMMANDS
+================================================================================
+
+SETUP & INSTALLATION
+--------------------
+pip install -r requirements.txt
+  Install all Python dependencies for the project
+
+cd frontend_ui && pnpm install && pnpm build
+  Build the frontend UI with Vite and generate dist folder
+
+PREPROCESSING (Optional - for APPT dataset)
+--------------------------------------------
+python appt_preprocess.py
+  Preprocess APPT dataset: removes dark backgrounds, crops, and augments images
+  Creates train_pre/ and test_pre/ directories with preprocessed data
+
+TRAINING
+--------
+python train.py
+  Train the model using ResNet50 with preprocessed APPT data (train_pre/test_pre)
+  Saves trained model to models/run{timestamp}_FINAL_*.pth and class_mapping.json
+
+SERVER & FRONTEND
+-----------------
+python app.py
+  Start Flask API server on localhost:5000 with integrated frontend_ui
+  Loads model from run20260413_104741_FINAL_91pct.pth or models/ directory
+  Accessible at http://localhost:5000 in browser
+
+DEVELOPMENT (Frontend Only)
+---------------------------
+cd frontend_ui && pnpm dev
+  Start Vite dev server with hot module reload for frontend development only
+  Note: Still requires backend running separately for API calls
+
+API ENDPOINTS (When server running)
+-----------------------------------
+POST http://localhost:5000/api/predict
+  Send image file (form-data, field: 'image') to get skin disease prediction
+
+GET http://localhost:5000/api/model-info
+  Get model details: classes, names, accuracy, epochs
+
+GET http://localhost:5000/api/training-history
+  Get complete training metrics per epoch
+
+GET http://localhost:5000/api/health
+  Check server and model status
+
+================================================================================
